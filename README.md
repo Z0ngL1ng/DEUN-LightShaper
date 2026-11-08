@@ -1,6 +1,6 @@
 # DEUN-LightShaper
 
-**Real-time color light field shaping with a diffractive-electronic U-shape network.**
+**Stable RGB light fields from dynamically distorted beams.**
 
 Official project repository for **[Color-resolved light field shaping via diffractive-electronic U-shape network with wavelength-aware virtual branching](https://doi.org/10.1016/j.neunet.2025.108502)**.
 
@@ -12,19 +12,17 @@ Yuheng Zong, Huaiping Jin, Hao Fang, Chai Hu, and Jiashuo Shi
 
 ## Overview
 
-DEUN reshapes dynamically distorted Gaussian beams into stable, color-resolved target patterns. A three-layer diffractive optical front-end works with an electronic U-shape decoder to combine optical wavefront modulation with nonlinear residual correction.
+Dynamic distortions in Gaussian beams make it difficult to preserve both color fidelity and frame-to-frame stability. **DEUN** addresses this challenge by combining a three-layer diffractive optical front-end with an electronic U-shape decoder: the optical stage shapes the wavefront, while the electronic stage corrects residual distortions and restores image detail.
 
-- **Wavelength-aware virtual branching (WAVB):** wavelength-conditioned training improves chromatic compensation through a shared diffractive structure, without adding physical branches.
-- **Frequency-selective skip connections (FSSC):** learned frequency masks restore mid- and high-frequency details while limiting low-frequency overcompensation.
-- **Diffractive optical flow prediction:** models frame-to-frame beam evolution to support temporal coherence and predictive correction.
+**Wavelength-aware virtual branching (WAVB)** guides the shared diffractive structure toward wavelength-specific compensation during training. **Frequency-selective skip connections (FSSC)** guide the decoder toward mid- and high-frequency detail recovery while limiting low-frequency overcompensation. A **diffractive optical flow predictor** models beam evolution between frames to support temporal coherence and predictive correction.
 
 ![DEUN framework, wavelength-aware training, and optical-electronic architecture](assets/framework.png)
 
-*Figure 1. Hybrid architecture and training workflow.*
+*Figure 1. Optical wavefront shaping and frequency-selective electronic correction within DEUN.*
 
 ## Dataset
 
-The hybrid experimental-synthetic dataset combines measured beam morphology and super-Gaussian profiles with simulated aberrations and noise. The paper uses 50 visible-light profiles at 532 nm and 12 terahertz profiles at 40.8 micrometers to inform synthesis, and evaluates dynamic shaping on 500 frames at 256 x 256 pixels.
+To ground the synthetic distortions in measured beam characteristics, we construct a hybrid experimental-synthetic dataset from beam morphology and super-Gaussian parameters extracted from 50 visible-light profiles at 532 nm and 12 terahertz profiles at 40.8 micrometers. Simulated aberrations and noise extend these characteristics into dynamic sequences; the shaping evaluation uses 500 frames at 256 x 256 pixels.
 
 ![Construction of the hybrid experimental-synthetic distorted beam dataset](assets/dataset.png)
 
@@ -32,13 +30,15 @@ The hybrid experimental-synthetic dataset combines measured beam morphology and 
 
 ## Results
 
-DEUN improves color fidelity, detail recovery, and noise suppression compared with DON-3 and DON-5 in the reported experiments.
+DEUN produces cleaner reconstructions with better color fidelity than the purely diffractive DON-3 and DON-5 baselines. The full model achieves **22.61 dB PSNR** and **0.874 SSIM** at **18.1 ms per frame**, supporting RGB shaping above **50 Hz** in our evaluation.
 
 ![Beam-shaping comparison between DON-3, DON-5, DEUN, and target images](assets/results.png)
 
-*Figure 3. Reconstruction examples under dynamic input distortions.*
+*Figure 3. DEUN preserves target colors and structure across changing input distortions.*
 
 **The demonstration targets use the album covers of 《黑色柳丁》 by David Tao (陶喆) and 《梦想家》 by Khalil Fong (方大同), chosen as a personal tribute to two of my favorite singers.**
+
+The ablation results show how wavelength-aware training and frequency-selective reconstruction each contribute to image quality:
 
 | Configuration | PSNR (dB) | SSIM | Latency (ms/frame) |
 | :--- | ---: | ---: | ---: |
@@ -46,7 +46,7 @@ DEUN improves color fidelity, detail recovery, and noise suppression compared wi
 | Without FSSC | 21.93 | 0.866 | 17.9 |
 | **Full DEUN** | **22.61** | **0.874** | **18.1** |
 
-Values are reported in Table 1 of the paper. The reported 18.1 ms/frame latency supports operation above 50 Hz; timing was measured on an RTX 5090 workstation and averaged over 500 sequential frames. Evaluation includes numerical diffraction and tests with experimentally measured beam inputs.
+*Ablation values are from Table 1. Timing is averaged over 500 sequential frames on an RTX 5090 workstation. Evaluation combines numerical diffraction with tests using experimentally measured beam inputs.*
 
 ## Citation
 
