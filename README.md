@@ -38,7 +38,7 @@ DEUN improves color fidelity, detail recovery, and noise suppression compared wi
 
 *Figure 3. Reconstruction examples under dynamic input distortions.*
 
-The demonstration targets use the album covers of 《黑色柳丁》 by David Tao (陶喆) and 《梦想家》 by Khalil Fong (方大同), chosen as a personal tribute to two of my favorite singers.
+**The demonstration targets use the album covers of 《黑色柳丁》 by David Tao (陶喆) and 《梦想家》 by Khalil Fong (方大同), chosen as a personal tribute to two of my favorite singers.**
 
 | Configuration | PSNR (dB) | SSIM | Latency (ms/frame) |
 | :--- | ---: | ---: | ---: |
