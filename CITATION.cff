@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the paper below."
+type: software
+title: DEUN-LightShaper
+authors:
+  - family-names: Zong
+    given-names: Yuheng
+  - family-names: Jin
+    given-names: Huaiping
+  - family-names: Fang
+    given-names: Hao
+  - family-names: Hu
+    given-names: Chai
+  - family-names: Shi
+    given-names: Jiashuo
+repository-code: "https://github.com/Z0ngL1ng/DEUN-LightShaper"
+preferred-citation:
+  type: article
+  title: "Color-resolved light field shaping via diffractive-electronic U-shape network with wavelength-aware virtual branching"
+  authors:
+    - family-names: Zong
+      given-names: Yuheng
+    - family-names: Jin
+      given-names: Huaiping
+    - family-names: Fang
+      given-names: Hao
+    - family-names: Hu
+      given-names: Chai
+    - family-names: Shi
+      given-names: Jiashuo
+  journal: Neural Networks
+  volume: "197"
+  start: "108502"
+  year: 2026
+  month: 5
+  doi: "10.1016/j.neunet.2025.108502"
