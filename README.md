@@ -36,7 +36,7 @@ DEUN produces cleaner reconstructions with better color fidelity than the purely
 
 *Figure 3. DEUN preserves target colors and structure across changing input distortions.*
 
-**The demonstration targets use the album covers of 《黑色柳丁》 by David Tao (陶喆) and 《梦想家》 by Khalil Fong (方大同), chosen as a personal tribute to two of my favorite singers.**
+<ins><strong><em>The demonstration targets use the album covers of <a href="https://music.apple.com/us/album/%E9%BB%91%E8%89%B2%E6%9F%B3%E4%B8%81/914664926">《黑色柳丁》</a> by David Tao (陶喆) and <a href="https://music.apple.com/us/album/the-dreamer/1772124855">《梦想家》</a> by Khalil Fong (方大同), chosen as a personal tribute to two of my favorite singers.</em></strong></ins>
 
 The ablation results show how wavelength-aware training and frequency-selective reconstruction each contribute to image quality:
 
